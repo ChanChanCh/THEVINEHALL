@@ -1,21 +1,15 @@
 package com.project.gongyeon2jo.show.controller;
 
-<<<<<<< HEAD
 import com.project.gongyeon2jo.show.dto.PerformanceDto;
 import com.project.gongyeon2jo.show.entity.Performance;
-=======
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
 import com.project.gongyeon2jo.show.model.PerformanceInput;
 import com.project.gongyeon2jo.show.service.PerformanceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-<<<<<<< HEAD
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-=======
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -28,10 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.UUID;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
 
 @Slf4j /*에러 화면에 띄우기 위해*/
 @RequiredArgsConstructor
@@ -40,7 +31,6 @@ public class PerformanceController {
 
     private final PerformanceService performanceService;
 
-<<<<<<< HEAD
     // 공연 목록 띄우기
     @GetMapping("/")
     public String performanceList(Model model) {
@@ -53,20 +43,6 @@ public class PerformanceController {
     @GetMapping("/performance/add")
     public String performanceAdd() {
         return "performance/add";
-=======
-    @GetMapping("/")
-    public String tomcat() {
-
-        return "index";
-    }
-
-
-    // 공연 목록 띄우기
-    @GetMapping("/show/add")
-    public String showAdd() {
-
-        return "show/add";
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
     }
 
     /*경로*/
@@ -78,17 +54,10 @@ public class PerformanceController {
         String[] dirs = {
                 String.format("%s/%d/", basePath, now.getYear()),
                 String.format("%s/%d/%02d/", basePath, now.getYear(), now.getMonthValue()),
-<<<<<<< HEAD
                 String.format("%s/%d/%02d/%02d/", basePath, now.getYear(), now.getMonthValue(), now.getDayOfMonth())};
 
         // 파일 생성
         for (String dir : dirs) {
-=======
-                String.format("%s/%d/%02d/%02d/", basePath, now.getYear(), now.getMonthValue(), now.getDayOfMonth()) };
-
-        // 파일 생성
-        for(String dir : dirs) {
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
             File file = new File(dir);
             if (!file.isDirectory()) {
                 file.mkdir(); // 디렉토리 생성
@@ -100,11 +69,7 @@ public class PerformanceController {
         if (originalFilename != null) {
             // .을 기준으로 구분
             int dotPosition = originalFilename.lastIndexOf("."); // .에 대한 위치 가져옴
-<<<<<<< HEAD
             if (dotPosition > -1) { // 존재하면
-=======
-            if (dotPosition > - 1) { // 존재하면
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
                 fileExtension = originalFilename.substring(dotPosition + 1); // 파일 확장자
             }
         }
@@ -119,11 +84,7 @@ public class PerformanceController {
         return newFilename;
     }
 
-<<<<<<< HEAD
     @PostMapping("/performance/add")
-=======
-    @PostMapping("/show/add")
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
     public String showAddSubmit(Model model,
                                 MultipartFile file, /*파일 받기 위해 띄움!! file로 받아야함!!!!*/
                                 PerformanceInput parameter) {
@@ -136,11 +97,7 @@ public class PerformanceController {
             // 확장자 넘겨주기 위해
             String originalFilename = file.getOriginalFilename();
 
-<<<<<<< HEAD
             String basePath = "C:/Users/김민지/Documents/THEVINEHALL/src/main/webapp/posters";
-=======
-            String basePath = "C:/Users/김민지/Documents/THEVINEHALL_INTELLIJ/posters";
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
             saveFilename = getNewSaveFile(basePath, originalFilename);
 
             try {
@@ -159,12 +116,6 @@ public class PerformanceController {
         boolean result = performanceService.add(parameter);
         model.addAttribute("result", result);
 
-<<<<<<< HEAD
         return "performance/add_complete";
     }
 }
-=======
-        return "show/add_complete";
-    }
-}
->>>>>>> parent of 964b28c (Revert "포스터 파일명 커밋")
