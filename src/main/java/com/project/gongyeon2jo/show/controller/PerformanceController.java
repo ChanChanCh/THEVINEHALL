@@ -1,15 +1,9 @@
 package com.project.gongyeon2jo.show.controller;
 
-import com.project.gongyeon2jo.show.dto.PerformanceDto;
-import com.project.gongyeon2jo.show.entity.Performance;
 import com.project.gongyeon2jo.show.model.PerformanceInput;
 import com.project.gongyeon2jo.show.service.PerformanceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -22,7 +16,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.UUID;
-import java.util.List;
 
 @Slf4j /*에러 화면에 띄우기 위해*/
 @RequiredArgsConstructor
@@ -31,18 +24,18 @@ public class PerformanceController {
 
     private final PerformanceService performanceService;
 
-    // 공연 목록 띄우기
     @GetMapping("/")
-    public String performanceList(Model model) {
-        List<Performance> lists = performanceService.listAll();
-        model.addAttribute("lists", lists);
-        return "/index";
+    public String tomcat() {
+
+        return "index";
     }
 
-    // 공연 추가하기
-    @GetMapping("/performance/add")
-    public String performanceAdd() {
-        return "performance/add";
+
+    // 공연 목록 띄우기
+    @GetMapping("/show/add")
+    public String showAdd() {
+
+        return "show/add";
     }
 
     /*경로*/
@@ -84,7 +77,7 @@ public class PerformanceController {
         return newFilename;
     }
 
-    @PostMapping("/performance/add")
+    @PostMapping("/show/add")
     public String showAddSubmit(Model model,
                                 MultipartFile file, /*파일 받기 위해 띄움!! file로 받아야함!!!!*/
                                 PerformanceInput parameter) {
@@ -97,7 +90,7 @@ public class PerformanceController {
             // 확장자 넘겨주기 위해
             String originalFilename = file.getOriginalFilename();
 
-            String basePath = "C:/Users/김민지/Documents/THEVINEHALL/src/main/webapp/posters";
+            String basePath = "C:/Users/김민지/Documents/THEVINEHALL_INTELLIJ/posters";
             saveFilename = getNewSaveFile(basePath, originalFilename);
 
             try {
@@ -116,6 +109,6 @@ public class PerformanceController {
         boolean result = performanceService.add(parameter);
         model.addAttribute("result", result);
 
-        return "performance/add_complete";
+        return "show/add_complete";
     }
 }

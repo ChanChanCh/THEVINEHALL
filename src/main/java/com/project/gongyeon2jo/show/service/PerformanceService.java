@@ -5,10 +5,7 @@ import com.project.gongyeon2jo.show.entity.Performance;
 import com.project.gongyeon2jo.show.model.PerformanceInput;
 import com.project.gongyeon2jo.show.repository.PerformanceRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +19,11 @@ public class PerformanceService {
     public boolean add(PerformanceInput parameter) {
 
         Performance performance = Performance.builder()
+                .prfperiod(parameter.getPrfperiod())
+                .category(parameter.getCategory())
+                .prfplacename(parameter.getPrfplacename())
+                .prfname(parameter.getPrfname())
+                .seatcnt(parameter.getSeatcnt())
                 .poster(parameter.getPoster()) // db에 파일명 올라가도록
                 .build();
 
@@ -31,15 +33,9 @@ public class PerformanceService {
     }
 
     // 공연 목록 띄우기
-    public List<Performance> listAll() {
+    public List<PerformanceDto> listAll() {
 
-        List<Performance> list = performanceRepository.findAll();
-        return list;
+        List<Performance> showList = performanceRepository.findAll();
+        return PerformanceDto.of(showList);
     }
-
-    // 페이징을 적용된 목록 띄우기
-    /*@Transactional(readOnly = true)
-    public Page<Performance> list(Pageable pageable) {
-        return performanceRepository.findAll(pageable);
-    }*/
 }

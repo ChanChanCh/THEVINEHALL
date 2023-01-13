@@ -20,6 +20,11 @@ public class Performance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     String id; // id
-    String poster; // 포스터 이미지
 
+    String prfperiod; // 공연기간
+    String category; // 장르
+    String prfplacename; // 공연장
+    String prfname; // 공연명
+    String seatcnt; // 좌석수
+    String poster; // 포스터 이미지
 }
