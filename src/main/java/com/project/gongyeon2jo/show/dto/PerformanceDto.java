@@ -21,7 +21,7 @@ public class PerformanceDto {
     // of 메서드 : ShowEntity 를 받아서 ShowDto 로 리턴해줌
     public static PerformanceDto of(Performance performance) {
         return PerformanceDto.builder()
-                .id(performance.getId())
+                .id(performance.getPerformanceId())
                 .poster(performance.getPoster())
                 .build();
     }

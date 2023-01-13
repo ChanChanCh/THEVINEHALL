@@ -19,7 +19,7 @@ public class Performance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id; // id
+    String performanceId; // id
     String poster; // 포스터 이미지
 
 }
