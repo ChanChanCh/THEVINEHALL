@@ -116,6 +116,6 @@ public class PerformanceController {
         boolean result = performanceService.add(parameter);
         model.addAttribute("result", result);
 
-        return "performance/add_complete";
+        return "performance/addComplete";
     }
 }
