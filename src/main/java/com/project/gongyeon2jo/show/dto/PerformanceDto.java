@@ -27,11 +27,6 @@ public class PerformanceDto {
     public static PerformanceDto of(Performance performance) {
         return PerformanceDto.builder()
                 .id(performance.getId())
-                .prfperiod(performance.getPrfperiod())
-                .category(performance.getCategory())
-                .prfplacename(performance.getPrfplacename())
-                .prfname(performance.getPrfname())
-                .seatcnt(performance.getSeatcnt())
                 .poster(performance.getPoster())
                 .build();
     }
