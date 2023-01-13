@@ -16,22 +16,18 @@ import java.util.List;
 public class PerformanceDto {
 
     String id; // id
-    String prfperiod; // 공연기간
+    String poster; // 포스터 이미지
+
+   /* String prfperiod; // 공연기간
     String category; // 장르
     String prfplacename; // 공연장
     String prfname; // 공연명
-    String seatcnt; // 좌석수
-    String poster; // 포스터 이미지
+    String seatcnt; // 좌석수*/
 
     // of 메서드 : ShowEntity 를 받아서 ShowDto 로 리턴해줌
     public static PerformanceDto of(Performance performance) {
         return PerformanceDto.builder()
                 .id(performance.getId())
-                .prfperiod(performance.getPrfperiod())
-                .category(performance.getCategory())
-                .prfplacename(performance.getPrfplacename())
-                .prfname(performance.getPrfname())
-                .seatcnt(performance.getSeatcnt())
                 .poster(performance.getPoster())
                 .build();
     }
