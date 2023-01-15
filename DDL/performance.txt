@@ -1,24 +1,19 @@
 -- 공연
 CREATE TABLE `performance` (
-   `id`       INT NOT NULL COMMENT '공연ID', -- 공연ID
-   `prfperiod`    VARCHAR(100) NULL     COMMENT '공연기간', -- 공연기간
-   `category`     VARCHAR(100) NULL     COMMENT '장르', -- 장르
-   `prfplacename` VARCHAR(100) NULL     COMMENT '공연장', -- 공연장
-   `prfname`      VARCHAR(100) NULL     COMMENT '공연명', -- 공연명
-   `seatcnt`      VARCHAR(100) NULL     COMMENT '좌석수', -- 좌석수
-   `poster`       VARCHAR(100) NULL     COMMENT '포스터이미지' -- 포스터이미지
+	`id`     INT          NOT NULL COMMENT '공연ID', -- 공연ID
+	`poster` VARCHAR(200) NULL     COMMENT '포스터이미지' -- 포스터이미지
 )
 COMMENT '공연';
 
 -- 공연
 ALTER TABLE `performance`
-   ADD CONSTRAINT `PK_performance` -- 공연 기본키
-      PRIMARY KEY (
-         `id` -- 공연ID
-      );
+	ADD CONSTRAINT `PK_performance` -- 공연 기본키
+		PRIMARY KEY (
+			`id` -- 공연ID
+		);
 
 ALTER TABLE `performance`
-   MODIFY COLUMN `id` INT NOT NULL AUTO_INCREMENT COMMENT '공연ID';
+	MODIFY COLUMN `id` INT NOT NULL AUTO_INCREMENT COMMENT '공연ID';
 
 ALTER TABLE `performance`
-   AUTO_INCREMENT = 1;
+	AUTO_INCREMENT = 1;
