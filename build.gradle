@@ -16,10 +16,12 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 
 dependencies {
+    implementation 'mysql:mysql-connector-java'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -27,6 +29,8 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.0.RELEASE'
+    implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
+
 
 }
 
