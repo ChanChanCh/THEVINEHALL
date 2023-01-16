@@ -1,7 +1,7 @@
 -- 공연
 CREATE TABLE `performance` (
    `performance_id`       INT NOT NULL COMMENT '공연ID', -- 공연ID
-   `poster`       VARCHAR(100) NULL     COMMENT '포스터이미지' -- 포스터이미지
+   `poster`       VARCHAR(200) NULL     COMMENT '포스터이미지' -- 포스터이미지
 )
 COMMENT '공연';
 
