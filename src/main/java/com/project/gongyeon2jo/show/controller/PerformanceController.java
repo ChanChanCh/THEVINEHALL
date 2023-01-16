@@ -97,7 +97,7 @@ public class PerformanceController {
             // 확장자 넘겨주기 위해
             String originalFilename = file.getOriginalFilename();
 
-            String basePath = "C:/Users/김민지/Documents/THEVINEHALL/src/main/webapp/posters";
+            String basePath = "C:/Users/김민지/Documents/THEVINEHALL_final/src/main/webapp/posters";
             saveFilename = getNewSaveFile(basePath, originalFilename);
 
             try {
