@@ -4,8 +4,14 @@
 <h1></h1>
 
 <tr th:each ="list : ${lists}"> <!--가로로 잘 뜬다!! 세로로 뜨게 하려면 p를 눌렀던 것 같음!!-->
-<!--<input type="hidden" name="id" th:value="${list.performanceId}" />-->
+<input type="hidden" name="id" th:value="${list.performanceId}" />
+<!--
+상세페이지 주소 넣기 전 공연 목록만 띄움
 <img th:src="${list.poster}" />
+-->
+
+<!--공연 목록 띄우고 상세페이지 연결-->
+<a th:href="'/performance/detail?id=' + ${list.performanceId}"><img th:src="${list.poster}" ></a>
 
 </body>
 </html>
