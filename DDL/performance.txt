@@ -1,19 +1,32 @@
 -- 공연
 CREATE TABLE `performance` (
-   `performance_id`       INT NOT NULL COMMENT '공연ID', -- 공연ID
-   `poster`       VARCHAR(200) NULL     COMMENT '포스터이미지' -- 포스터이미지
+	`performance_id`           INT           NOT NULL COMMENT '공연ID', -- 공연ID
+	`display_id`   VARCHAR(50)   NULL     COMMENT '공연시설ID', -- 공연시설ID
+	`display_name` VARCHAR(100)   NULL     COMMENT '공연명', -- 공연명
+	`display_date`    VARCHAR(100)   NULL     COMMENT '공연종료일', -- 공연일
+	`company`      VARCHAR(100)  NULL     COMMENT '제작사', -- 제작사
+	`price`        VARCHAR(50)   NULL     COMMENT '티켓가격', -- 티켓가격
+	`story`        VARCHAR(1000) NULL     COMMENT '공연소개', -- 공연소개
+	`question`     VARCHAR(100)  NULL     COMMENT '예매문의', -- 예매문의
+	`phone`        VARCHAR(100)  NULL     COMMENT '문의연락처', -- 문의연락처
+	`announcement` VARCHAR(1000) NULL     COMMENT '공지사항', -- 공지사항
+	`poster`       VARCHAR(200)  NULL     COMMENT '포스터이미지' -- 포스터이미지
 )
 COMMENT '공연';
 
 -- 공연
 ALTER TABLE `performance`
-   ADD CONSTRAINT `PK_performance` -- 공연 기본키
-      PRIMARY KEY (
-         `performance_id` -- 공연ID
-      );
+	ADD CONSTRAINT `PK_performance` -- 공연 기본키
+		PRIMARY KEY (
+			`performance_id` -- 공연ID
+		);
 
 ALTER TABLE `performance`
-   MODIFY COLUMN `performance_id` INT NOT NULL AUTO_INCREMENT COMMENT '공연ID';
+	MODIFY COLUMN `performance_id` INT NOT NULL AUTO_INCREMENT COMMENT '공연ID';
 
 ALTER TABLE `performance`
-   AUTO_INCREMENT = 1;
+	AUTO_INCREMENT = 1;
+
+
+**db에 poster 경로 저장된 상태에서 앞 부분 경로 지우고 /posters/2023/01/17/c8192e7cd05846a9939875a1fa45d6d8.jpg 만 남겨주세요!
+**그렇게 해야 웹상에서 파일이 보여요!
