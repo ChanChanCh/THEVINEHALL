@@ -1,15 +1,10 @@
-package com.project.gongyeon2jo.show.controller;
+package com.project.gongyeon2jo.performance.controller;
 
-import com.project.gongyeon2jo.show.dto.PerformanceDto;
-import com.project.gongyeon2jo.show.entity.Performance;
-import com.project.gongyeon2jo.show.model.PerformanceInput;
-import com.project.gongyeon2jo.show.service.PerformanceService;
+import com.project.gongyeon2jo.performance.entity.Performance;
+import com.project.gongyeon2jo.performance.model.PerformanceInput;
+import com.project.gongyeon2jo.performance.service.PerformanceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -21,8 +16,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.UUID;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j /*에러 화면에 띄우기 위해*/
 @RequiredArgsConstructor
@@ -117,5 +113,16 @@ public class PerformanceController {
         model.addAttribute("result", result);
 
         return "performance/addComplete";
+    }
+
+    // 공연 상세보기
+    @GetMapping("/performance/detail") // localhost:8080/performance/detail?id=1
+    public String detail(Model model, int id) {
+
+        //*list 가 아니다!! 데이터 딱 한줄이 필요하므로!!*//*
+        Performance detail = performanceService.detail(id);
+        model.addAttribute("detail", detail);
+
+        return "/performance/detail";
     }
 }
