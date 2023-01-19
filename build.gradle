@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.3.3.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.7.7'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'war' // 톰캣 실행 위해
 }
 
@@ -34,13 +34,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.0.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.7'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
 
