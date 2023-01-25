@@ -1,22 +1,3 @@
-<!--<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> &lt;!&ndash;이걸 추가해야 타임리프 기능이 적용됨&ndash;&gt;
-<body>
-<h1></h1>
-
-&lt;!&ndash;가로로 잘 뜬다!! 세로로 뜨게 하려면 p를 눌렀던 것 같음!!&ndash;&gt;
-<tr th:each ="list : ${lists}">
-<input type="hidden" name="id" th:value="${list.performanceId}" />
-
-&lt;!&ndash;
-상세페이지 주소 넣기 전 공연 목록만 띄움
-<img th:src="${list.poster}" />
-&ndash;&gt;
-
-&lt;!&ndash;공연 목록 띄우고 상세페이지 연결&ndash;&gt;
-<a th:href="'/performance/detail?id=' + ${list.performanceId}"><img th:src="${list.poster}" ></a>
-
-</body>
-</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
