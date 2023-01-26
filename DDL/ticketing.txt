@@ -1,0 +1,34 @@
+-- 예매
+CREATE TABLE `ticketing` (
+	`ticketing_id`       INT NOT NULL COMMENT '예매ID', -- 예매ID
+	`price`              VARCHAR(100) NULL     COMMENT '티켓가격', -- 티켓가격
+	`ticketing_quantity` INT          NULL     COMMENT '예매수량', -- 예매수량
+	`ticketing_date`     DATETIME     NULL     COMMENT '예매일시', -- 예매일시
+	`performance_id`     INT          NULL     COMMENT '공연ID', -- 공연ID
+	`user_id`            VARCHAR(100) NULL     COMMENT '회원ID' -- 회원ID
+)
+COMMENT '예매';
+
+-- 예매
+ALTER TABLE `ticketing`
+	ADD CONSTRAINT `PK_ticketing` -- 예매 기본키
+		PRIMARY KEY (
+			`ticketing_id` -- 예매ID
+		);
+
+ALTER TABLE `ticketing`
+	MODIFY COLUMN `ticketing_id` INT NOT NULL AUTO_INCREMENT COMMENT '예매ID';
+
+ALTER TABLE `ticketing`
+	AUTO_INCREMENT = 1;
+
+
+-- 예매
+ALTER TABLE `ticketing`
+	ADD CONSTRAINT `FK_performance_TO_ticketing` -- 공연 -> 예매
+		FOREIGN KEY (
+			`performance_id` -- 공연ID
+		)
+		REFERENCES `performance` ( -- 공연
+			`performance_id` -- 공연ID
+		);
