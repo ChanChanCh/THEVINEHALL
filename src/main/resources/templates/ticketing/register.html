@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <title>Title</title>
+    <style>
+        .stage{
+            /*background-position: 10% 10px;*/
+            background-position: center top; /*가운데 위*/
+            width: auto;
+            height: 100px;
+            background-color: burlywood;
+            text-align: center;
+            margin-top: 50px; /*여백*/
+            margin-right: 200px; /*여백*/
+            margin-left: 200px; /*여백*/
+           /* margin: 25px;
+            padding: 5px;
+            width: 1000px;
+            height: 100px;*/
+        }
+
+        .seat {
+            border: 1px solid; /*좌석 네모 만들기*/
+            width: 40px; /*한 좌석의 크기*/
+            height: 40px;
+            margin : 5px;  /*여백*/
+            background-color: lightsteelblue;
+            text-align: center;
+        }
+
+        .row{
+            margin-top: 10px;
+            display: flex; /*세로로 나열되던걸 가로로 나열되도록*/
+            justify-content: center; /*중앙 배치*/
+        }
+
+        .clicked { /*좌석 클릭하면 회색으로 변하도록*/
+            background-color : gray;
+        }
+        .div{
+            margin-top: 20px;
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+<!--제이쿼리는 값을 ""안에, 구분은 ,사용-->
+<!--<form method="post" >-->
+<form action="/ticketing/add" method="post"> <!--이렇게 해줘야 post로 아작스가 간다-->
+<div class="seatContainer">
+    <div class="stage">STAGE</div>
+    <div class="row">
+        <span class="seat">A1</span>
+        <span class="seat">A2</span>
+        <span class="seat">A3</span>
+        <span class="seat">A4</span>
+        <span class="seat">A5</span>
+        <span class="seat">A6</span>
+        <span class="seat">A7</span>
+        <span class="seat">A8</span>
+        <span class="seat">A9</span>
+        <span class="seat">A10</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="seat">A11</span>
+        <span class="seat">A12</span>
+        <span class="seat">A13</span>
+        <span class="seat">A14</span>
+        <span class="seat">A15</span>
+        <span class="seat">A16</span>
+        <span class="seat">A17</span>
+        <span class="seat">A18</span>
+        <span class="seat">A19</span>
+        <span class="seat">A20</span>
+    </div>
+    <div class="row">
+        <span class="seat">B1</span>
+        <span class="seat">B2</span>
+        <span class="seat">B3</span>
+        <span class="seat">B4</span>
+        <span class="seat">B5</span>
+        <span class="seat">B6</span>
+        <span class="seat">B7</span>
+        <span class="seat">B8</span>
+        <span class="seat">B9</span>
+        <span class="seat">B10</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="seat">B11</span>
+        <span class="seat">B12</span>
+        <span class="seat">B13</span>
+        <span class="seat">B14</span>
+        <span class="seat">B15</span>
+        <span class="seat">B16</span>
+        <span class="seat">B17</span>
+        <span class="seat">B18</span>
+        <span class="seat">B19</span>
+        <span class="seat">B20</span>
+    </div>
+    <div class="row">
+        <span class="seat">C1</span>
+        <span class="seat">C2</span>
+        <span class="seat">C3</span>
+        <span class="seat">C4</span>
+        <span class="seat">C5</span>
+        <span class="seat">C6</span>
+        <span class="seat">C7</span>
+        <span class="seat">C8</span>
+        <span class="seat">C9</span>
+        <span class="seat">C10</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="seat">C11</span>
+        <span class="seat">C12</span>
+        <span class="seat">C13</span>
+        <span class="seat">C14</span>
+        <span class="seat">C15</span>
+        <span class="seat">C16</span>
+        <span class="seat">C17</span>
+        <span class="seat">C18</span>
+        <span class="seat">C19</span>
+        <span class="seat">C20</span>
+    </div>
+    <div class="row">
+        <span class="seat">D1</span>
+        <span class="seat">D2</span>
+        <span class="seat">D3</span>
+        <span class="seat">D4</span>
+        <span class="seat">D5</span>
+        <span class="seat">D6</span>
+        <span class="seat">D7</span>
+        <span class="seat">D8</span>
+        <span class="seat">D9</span>
+        <span class="seat">D10</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="seat">D11</span>
+        <span class="seat">D12</span>
+        <span class="seat">D13</span>
+        <span class="seat">D14</span>
+        <span class="seat">D15</span>
+        <span class="seat">D16</span>
+        <span class="seat">D17</span>
+        <span class="seat">D18</span>
+        <span class="seat">D19</span>
+        <span class="seat">D20</span>
+    </div>
+    <div class="row">
+        <span class="seat">E1</span>
+        <span class="seat">E2</span>
+        <span class="seat">E3</span>
+        <span class="seat">E4</span>
+        <span class="seat">E5</span>
+        <span class="seat">E6</span>
+        <span class="seat">E7</span>
+        <span class="seat">E8</span>
+        <span class="seat">E9</span>
+        <span class="seat">E10</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="seat">E11</span>
+        <span class="seat">E12</span>
+        <span class="seat">E13</span>
+        <span class="seat">E14</span>
+        <span class="seat">E15</span>
+        <span class="seat">E16</span>
+        <span class="seat">E17</span>
+        <span class="seat">E18</span>
+        <span class="seat">E19</span>
+        <span class="seat">E20</span>
+    </div>
+    <div class="row">
+        <span class="seat">F1</span>
+        <span class="seat">F2</span>
+        <span class="seat">F3</span>
+        <span class="seat">F4</span>
+        <span class="seat">F5</span>
+        <span class="seat">F6</span>
+        <span class="seat">F7</span>
+        <span class="seat">F8</span>
+        <span class="seat">F9</span>
+        <span class="seat">F10</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="seat">F11</span>
+        <span class="seat">F12</span>
+        <span class="seat">F13</span>
+        <span class="seat">F14</span>
+        <span class="seat">F15</span>
+        <span class="seat">F16</span>
+        <span class="seat">F17</span>
+        <span class="seat">F18</span>
+        <span class="seat">F19</span>
+        <span class="seat">F20</span>
+    </div>
+
+    <div class="div">
+        <input type="hidden" name="id" th:value="${detail.performanceId}" /> <!--id는 get 에서 내려줄때만 쓰임-->
+        <span id='count'>0</span>개 구매시 총 가격은 <span id='money'>0</span> 입니다. &nbsp;
+        <button>결제 하기</button>
+    </div>
+</div>
+</form>
+<!--</form>-->
+<script th:inline="javascript"> /*javascript 내에서 타임 변수 사용하기 위해 추가*/
+    /*<![CDATA[*/
+
+    var seat = document.getElementsByClassName("seat");
+
+    function handleClick(event) {
+
+       // 화면에 예매 갯수 결과를 표시할 element
+        const resultElement = document.getElementById('money');
+        let money = resultElement.innerText;
+
+        const resultElement2 = document.getElementById('count');
+        let count = resultElement2.innerText;
+
+        // 클릭시 색깔변경, 재클릭하면 해제
+        if (event.target.classList[1] === "clicked") { // 클릭된 상태에서 다시 재클릭한 경우
+            event.target.classList.remove("clicked");
+            count = parseInt(count) - 1;
+            money = parseInt(money) - /*[[${detail.price}]]*/;
+        } else { // 처음 클릭한 경우
+            event.target.classList.add("clicked");
+            count = parseInt(count) + 1;
+            money = parseInt(money) + /*[[${detail.price}]]*/;
+        }
+
+        // 결과 출력 => 몇 개 예매했는지 => 잘 나옴!!!!
+        resultElement.innerText = money;
+        resultElement2.innerText = count;
+
+        /*아작스에 data로 컨트롤러 넘겨주는 것 같은데 왜 null이 들어가누!*/
+        $.ajax({
+            type: 'POST',
+            url: 'ticketing/add',
+            data: {
+                "money" : money,
+                "count" : count,
+            },
+            success : function(data) {
+                if (data) {
+                    alert("완료")
+                } else {
+                    alert("전송된 값 없음")
+                }
+            }
+        });
+    }
+
+
+    function init() {
+        for (var i = 0; i < seat.length; i++) { // 전좌석에 위 이벤트 적용
+            seat[i].addEventListener("click", handleClick);
+        }
+    }
+
+    init();
+
+/*]]>*/
+</script>
+</body>
+</html>
