@@ -1,57 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> <!--이걸 추가해야 타임리프 기능이 적용됨-->
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <title>My Now Amazing Webpage</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').slick({
+                slidesToShow: 3,
+                slidesToScroll: 3
+            });
+        });
+    </script>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .slider {
+            width: 1100px;
+            margin: 0px auto;
+        }
+        .slider .slick-slide {
+            margin-left: 40px;
+            margin-top: 100px;
+        }
+        .slick-prev:before, .slick-next:before {
+            color: #444444;
+        }
+    </style>
 </head>
 <body>
-<h1></h1>
+<!--<tr th:each ="list : ${lists}">
+<input type="hidden" name="id" th:value="${list.performanceId}" />
+<a th:href="'/performance/detail?id=' + ${list.performanceId}"><img th:src="${list.poster}" ></a>-->
 
-<img src="/posters/2023/01/13/ddf2b086dbd74da68624bc969e215424.jpg" />
-<img src="/posters/2023/01/13/f4e47017e1de4f258f1bfec6dde80fd4.jpg" />
-<img src="/posters/2023/01/13/aa15258ea6b64cf0920b8bc5a0b45511.jpg" />
-<img src="/posters/2023/01/13/70ddd79dcf914377946b2d831d9d9ade.jpg" />
-<img src="/posters/2023/01/13/8b819fe5beeb45bda52dd7068049c07c.jpg" />
-
-<img src="/posters/2023/01/13/f50d31e81a0a470b913f3376fb8e1345.png" />
-<img src="/posters/2023/01/13/8dab83167c9349079fb22957fd34d3bb.jpg" />
-<img src="/posters/2023/01/13/b23ae7c4dbcb489893f27c9766ddc7d8.png" />
-<img src="/posters/2023/01/13/74d10c9e3bf1452f9f2ff9c268468dc6.jpg" />
-<img src="/posters/2023/01/13/e5d8ff84d7a3489f839213970d6c6a71.jpg" />
-
-<img src="/posters/2023/01/13/2c4034d58fda46b29510afdb9d97fcc0.jpg" />
-<img src="/posters/2023/01/13/f124bdd9131b493591d99d9e356299be.jpg" />
-<img src="/posters/2023/01/13/27379a3c1fe942bcbadcd1913ec189dd.jpg" />
-<img src="/posters/2023/01/13/34d942f165d3421b97af43f56a6858a6.jpg" />
-<img src="/posters/2023/01/13/cf8280e760de4fdea3a8821412d0959a.jpg" />
-
-<img src="/posters/2023/01/13/834e41bdebef40a9b4281e8b0f57b328.jpg" />
-<img src="/posters/2023/01/13/05b7cbb87ee044e59342b4720667b30e.jpeg" />
-<img src="/posters/2023/01/13/2b6f9e137bb241549eceadac899bff01.jpg" />
-<img src="/posters/2023/01/13/8ef021c9fc1d415a89d5f0f90d1a131d.jpg" />
-<img src="/posters/2023/01/13/31343653d38a45cc9353ea6ca6012450.jpg" />
-
-<img src="/posters/2023/01/13/66510332b34d4c6ea9168f44007b0eca.jpg" />
-<img src="/posters/2023/01/13/5475b5b76def4979a10346902be68006.jpg" />
-<img src="/posters/2023/01/13/ffeca1345a4d4e9e928cc4923955804d.jpg" />
-<img src="/posters/2023/01/13/59cf10a788ea4d75b1eb09d0b2c8a6e1.jpg" />
-<img src="/posters/2023/01/13/e18b6736af4745a0bcb9387ec448757c.jpg" />
-
-<img src="/posters/2023/01/13/8e13c9bcb13f45f88e222987c04ddc22.jpg" />
-<img src="/posters/2023/01/13/47e3bfc0589b4337904ca0e96624799d.jpg" />
-<img src="/posters/2023/01/13/468c47fd63674f8faa7427b6589286c3.jpg" />
-<img src="/posters/2023/01/13/e2fa2a0254aa45a6a353c67bc37abf6a.jpg" />
-<img src="/posters/2023/01/13/583babef59ba477fb8b94a8105e554af.jpg" />
-
-<img src="/posters/2023/01/13/ac11ba4e0f7143f588411b0ab9bd2133.jpg" />
-<img src="/posters/2023/01/13/c036361da9824bae976d2dc60d324a1d.jpg" />
-<img src="/posters/2023/01/13/2019b9e7316d490e811d620031e5521e.jpg" />
-<img src="/posters/2023/01/13/13486aa952bb41c9a7d6d5b451704c29.jpeg" />
-<img src="/posters/2023/01/13/8ba4cd80ebe44654960edf348b856aab.jpeg" />
-
-<img src="/posters/2023/01/13/66baad0a438a4f16b07a3e169c8634dd.jpeg" />
-<img src="/posters/2023/01/13/bdf8ac8c11134687bb9e682dabf7c8c9.jpeg" />
-<img src="/posters/2023/01/13/c39d93e6634041d68e4a4644ae565ff1.jpg" />
-
+    <div class="slider">
+        <div><a th:href="'/performance/detail?id=' + 37"> <img src="/posters/2023/01/18/ce53c443b2bf4c33b5f04d62c1434fa4.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 36"> <img src="/posters/2023/01/18/41e043bb835c429ba738e2cfa81b2c17.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 35"> <img src="/posters/2023/01/18/733e8a45cf8343208a9889cfd63fc17c.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 34"> <img src="/posters/2023/01/18/db92177220214a13bdea55657ecdd8c0.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 33"> <img src="/posters/2023/01/18/c52648aa91c1480c957267e64dbd95ee.png" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 32"> <img src="/posters/2023/01/17/178c1868309f449e88eb9e57dc0ab4d2.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 31"> <img src="/posters/2023/01/17/6cff117ef8c14e55ace0b2779da79ade.png" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 30"> <img src="/posters/2023/01/17/18d78705a50f4688a6406a3ba345d362.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 29"> <img src="/posters/2023/01/17/ebf3c0f53ec34fbca642d1128afca9f2.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 28"> <img src="/posters/2023/01/17/b27f485766d64cc1a08a54808205e020.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 27"> <img src="/posters/2023/01/17/a120f6196b5f4df996f00f09f2fbf194.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 26"> <img src="/posters/2023/01/17/69c4e6f3d1bb443aa46dcc5917d4aead.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 25"> <img src="/posters/2023/01/17/4968767c76dc4e50b5af975b183afcb7.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 24"> <img src="/posters/2023/01/17/f6044f57a6814616bc37440eed7273d0.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 23"> <img src="/posters/2023/01/17/dca01259b7b54b52809151f8a4b8aa8b.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 22"> <img src="/posters/2023/01/17/2d56e1569df4444493009d8ad061db4b.jpeg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 21"> <img src="/posters/2023/01/17/9f9e5e2cf5fe44aeaa371fd887acab14.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 20"> <img src="/posters/2023/01/17/c8192e7cd05846a9939875a1fa45d6d8.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 19"> <img src="/posters/2023/01/17/7f6eaf0266b24a3b8f5271b6227e955f.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 18"> <img src="/posters/2023/01/17/5b397a57ef0542089181cc6545780cfd.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 17"> <img src="/posters/2023/01/17/77e0ce6192554af4b1305742faaefe67.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 16"> <img src="/posters/2023/01/17/fce28d82ca874dd4aa22bcc87fd25932.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 15"> <img src="/posters/2023/01/17/f05c69c9f06e4d9e9714cdf298b7b02a.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 14"> <img src="/posters/2023/01/17/c302a8c98fb246b09a6014da6e3e02dc.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 13"> <img src="/posters/2023/01/17/411aa9ed1a0a440db6ded500448b5e83.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 12"> <img src="/posters/2023/01/17/797a07a5d5f942c5b58220d20c12c09a.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 11"> <img src="/posters/2023/01/17/b847768ff73a4369b9e0932eafe13ab8.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 10"> <img src="/posters/2023/01/17/a7776124deb848109eb3a369b8dddc8a.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 9"> <img src="/posters/2023/01/17/0fd7d65b8ba04bc3822626c2ec19d276.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 8"> <img src="/posters/2023/01/17/7498b66a4b2e4756bab98841356743e3.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 7"> <img src="/posters/2023/01/17/a3aeb9382df448e0ab6efb76572df021.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 6"> <img src="/posters/2023/01/17/383b3075f9314f02b21a99f7f4a6261b.jpg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 5"> <img src="/posters/2023/01/17/f527c134339e477faac3e1c48fb5fa7f.jpeg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 4"> <img src="/posters/2023/01/17/3f8d2466769d45309ce38dd6abba8eb0.jpeg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 3"> <img src="/posters/2023/01/17/5aec4c4df7f641c6ab8efc618cc87475.jpeg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 2"> <img src="/posters/2023/01/17/b014f861a825450aace21115244f2c51.jpeg" /></a></div>
+        <div><a th:href="'/performance/detail?id=' + 1"> <img src="/posters/2023/01/17/641b5a10e9574fd581da535d2e128505.jpg" /></a></div>
+    </div>
 </body>
 </html>
+
+

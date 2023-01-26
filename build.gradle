@@ -42,6 +42,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.7'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
+
 
 }
 

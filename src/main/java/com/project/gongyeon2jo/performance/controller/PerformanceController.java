@@ -1,15 +1,10 @@
-package com.project.gongyeon2jo.show.controller;
+package com.project.gongyeon2jo.performance.controller;
 
-import com.project.gongyeon2jo.show.dto.PerformanceDto;
-import com.project.gongyeon2jo.show.entity.Performance;
-import com.project.gongyeon2jo.show.model.PerformanceInput;
-import com.project.gongyeon2jo.show.service.PerformanceService;
+import com.project.gongyeon2jo.performance.entity.Performance;
+import com.project.gongyeon2jo.performance.model.PerformanceInput;
+import com.project.gongyeon2jo.performance.service.PerformanceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -21,8 +16,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.UUID;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j /*에러 화면에 띄우기 위해*/
 @RequiredArgsConstructor
@@ -54,10 +50,10 @@ public class PerformanceController {
         String[] dirs = {
                 String.format("%s/%d/", basePath, now.getYear()),
                 String.format("%s/%d/%02d/", basePath, now.getYear(), now.getMonthValue()),
-                String.format("%s/%d/%02d/%02d/", basePath, now.getYear(), now.getMonthValue(), now.getDayOfMonth()) };
+                String.format("%s/%d/%02d/%02d/", basePath, now.getYear(), now.getMonthValue(), now.getDayOfMonth())};
 
         // 파일 생성
-        for(String dir : dirs) {
+        for (String dir : dirs) {
             File file = new File(dir);
             if (!file.isDirectory()) {
                 file.mkdir(); // 디렉토리 생성
@@ -69,7 +65,7 @@ public class PerformanceController {
         if (originalFilename != null) {
             // .을 기준으로 구분
             int dotPosition = originalFilename.lastIndexOf("."); // .에 대한 위치 가져옴
-            if (dotPosition > - 1) { // 존재하면
+            if (dotPosition > -1) { // 존재하면
                 fileExtension = originalFilename.substring(dotPosition + 1); // 파일 확장자
             }
         }
@@ -97,7 +93,7 @@ public class PerformanceController {
             // 확장자 넘겨주기 위해
             String originalFilename = file.getOriginalFilename();
 
-            String basePath = "C:/Users/김민지/Documents/THEVINEHALL/src/main/webapp/posters";
+            String basePath = "C:/Users/김민지/Documents/THEVINEHALL_final/src/main/webapp/posters";
             saveFilename = getNewSaveFile(basePath, originalFilename);
 
             try {
@@ -116,6 +112,17 @@ public class PerformanceController {
         boolean result = performanceService.add(parameter);
         model.addAttribute("result", result);
 
-        return "performance/add_complete";
+        return "performance/addComplete";
+    }
+
+    // 공연 상세보기
+    @GetMapping("/performance/detail") // localhost:8080/performance/detail?id=1
+    public String detail(Model model, int id) {
+
+        //*list 가 아니다!! 데이터 딱 한줄이 필요하므로!!*//*
+        Performance detail = performanceService.detail(id);
+        model.addAttribute("detail", detail);
+
+        return "/performance/detail";
     }
 }
