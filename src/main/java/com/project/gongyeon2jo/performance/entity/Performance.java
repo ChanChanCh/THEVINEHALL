@@ -25,7 +25,7 @@ public class Performance {
     String company; // 제작사
     String displayId; // 공연시설
     String displayDate; // 공연일
-    String price; // 티켓 가격
+    int price; // 티켓 가격
     String story; // 공연소개
     String announcement; // 공지사항
     String question; // 예매 문의
