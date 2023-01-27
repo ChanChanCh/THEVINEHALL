@@ -192,7 +192,10 @@
     </div>
 
     <div class="div">
-        <input type="hidden" name="id" th:value="${detail.performanceId}" /> <!--id는 get 에서 내려줄때만 쓰임-->
+        <!--name 값을 통해 controller 로 넘겨줄 수 있음-->
+        <input type="hidden" name="id" th:value="${detail.performanceId}" />
+        <input type="hidden" id="ticketingQuantity" name="ticketingQuantity" value="0"/>
+        <input type="hidden" id="price" name="price" value="0"/>
         <span id='count'>0</span>개 구매시 총 가격은 <span id='money'>0</span> 입니다. &nbsp;
         <button>결제 하기</button>
     </div>
@@ -216,32 +219,20 @@
             event.target.classList.remove("clicked");
             count = parseInt(count) - 1;
             money = parseInt(money) - [[${detail.price}]] * 1;
+            document.getElementById('ticketingQuantity').value = count;
+            document.getElementById('price').value = money;
         } else { // 처음 클릭한 경우
             event.target.classList.add("clicked");
             count = parseInt(count) + 1;
             money = parseInt(money) + [[${detail.price}]] * 1;
+            document.getElementById('ticketingQuantity').value = count;
+            document.getElementById('price').value = money;
         }
 
         // 결과 출력 => 몇 개 예매했는지 => 잘 나옴!!!!
         resultElement.innerText = money;
         resultElement2.innerText = count;
 
-        /*아작스에 data로 컨트롤러 넘겨주는 것 같은데 왜 null이 들어가누!*/
-        /*$.ajax({
-            type: 'POST',
-            url: 'ticketing/add',
-            data: {
-                "money" : money,
-                "count" : count,
-            },
-            success : function(data) {
-                if (data) {
-                    alert("완료")
-                } else {
-                    alert("전송된 값 없음")
-                }
-            }
-        });*/
     }
 
 
