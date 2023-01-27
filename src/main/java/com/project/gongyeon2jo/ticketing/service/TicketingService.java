@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,7 @@ public class TicketingService {
 
     @Transactional
     public void insert(Ticketing ticketing) {
+        ticketing.setTicketingDate(LocalDateTime.now());
         ticketingRepository.save(ticketing);
     }
 
