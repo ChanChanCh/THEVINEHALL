@@ -1,21 +1,21 @@
 package com.project.gongyeon2jo.ticketing.service;
 
-import com.project.gongyeon2jo.ticketing.domain.Ticketing;
-import com.project.gongyeon2jo.ticketing.dto.TicketingDto;
+import com.project.gongyeon2jo.ticketing.repository.TicketingRepository;
+import com.project.gongyeon2jo.ticketing.model.Ticketing;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
 @Service
-public interface TicketingService {
-    List<TicketingDto> getTicketingList();
+@RequiredArgsConstructor
+public class TicketingService {
 
-    void insert();
+    private final TicketingRepository ticketingRepository;
 
-    void update();
+    @Transactional
+    public void insert(Ticketing ticketing) {
+        ticketingRepository.save(ticketing);
+    }
 
-    void delete();
 }
-
-
-

@@ -1,33 +1,36 @@
 package com.project.gongyeon2jo.ticketing.controller;
 
-import com.project.gongyeon2jo.ticketing.domain.Ticketing;
-import com.project.gongyeon2jo.ticketing.dto.TicketingDto;
+import com.project.gongyeon2jo.ticketing.model.Ticketing;
 import com.project.gongyeon2jo.ticketing.service.TicketingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/ticketing")
 public class TicketingController {
 
-    public TicketingService ticketingService;
+    private final TicketingService ticketingService;
 
     @GetMapping("")
-    public List<TicketingDto> getTicketingList() {
-        return ticketingService.getTicketingList();
+    public ModelAndView getTicketing(Integer performanceId) {
+        ModelAndView modelAndView = new ModelAndView();
+//        Optional<Performance> performance = performanceService.getPerformance(performanceId);
+//        modelAndView.addObject("performance", performance.get());
+        modelAndView.setViewName("ticketing/detail");
+        return modelAndView;
     }
 
-    @GetMapping("/seat")
-    public String Ticketing(Model model) {
-
-
-        return "ticketing/seat";
+    @PostMapping("")
+    public ModelAndView insert(Ticketing ticketing) {
+        ModelAndView modelAndView = new ModelAndView();
+        ticketingService.insert(ticketing);
+        modelAndView.addObject("ticketing", ticketing);
+        modelAndView.setViewName("ticketing/complete");
+        return modelAndView;
     }
-
 }
