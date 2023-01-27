@@ -21,7 +21,10 @@
       <p>주최 / 주관</p>
       &nbsp; &nbsp;<span th:text="${detail.company}"/>
       <p>가격</p>
-      &nbsp; &nbsp;<span th:text="${detail.price}"/>
+         <span th:text="${detail.price}"/>
+         <!--<input type="hidden" name="id" th:value="${detail.performanceId}" />-->
+      &nbsp; &nbsp;<!--<span th:text="${detail.price}"/> <a th:href="'/performance/detail?id=' + ${detail.performanceId}" ></a>-->
+        <a button th:href="'/ticketing/register?id=' + ${detail.performanceId}">예매하기</button></a>
   </div>
   <div>
       <p></p><p></p><p></p>
