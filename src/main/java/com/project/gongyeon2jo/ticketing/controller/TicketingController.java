@@ -1,5 +1,7 @@
 package com.project.gongyeon2jo.ticketing.controller;
 
+import com.project.gongyeon2jo.performance.entity.Performance;
+import com.project.gongyeon2jo.performance.service.PerformanceService;
 import com.project.gongyeon2jo.ticketing.model.Ticketing;
 import com.project.gongyeon2jo.ticketing.service.TicketingService;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +18,15 @@ public class TicketingController {
 
     private final TicketingService ticketingService;
 
+    private final PerformanceService performanceService;
+
     @GetMapping("")
     public ModelAndView getTicketing(Integer performanceId) {
         ModelAndView modelAndView = new ModelAndView();
 //        Optional<Performance> performance = performanceService.getPerformance(performanceId);
 //        modelAndView.addObject("performance", performance.get());
+        Performance detail = performanceService.detail(performanceId);
+        modelAndView.addObject("detail", detail);
         modelAndView.setViewName("ticketing/detail");
         return modelAndView;
     }
