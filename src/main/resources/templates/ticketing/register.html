@@ -49,8 +49,7 @@
 </head>
 <body>
 <!--제이쿼리는 값을 ""안에, 구분은 ,사용-->
-<!--<form method="post" >-->
-<form action="/ticketing/add" method="post"> <!--이렇게 해줘야 post로 아작스가 간다-->
+<form action="/ticketing/register" method="post"> <!--이렇게 해줘야 post로 아작스가 간다-->
 <div class="seatContainer">
     <div class="stage">STAGE</div>
     <div class="row">
@@ -199,9 +198,7 @@
     </div>
 </div>
 </form>
-<!--</form>-->
 <script th:inline="javascript"> /*javascript 내에서 타임 변수 사용하기 위해 추가*/
-    /*<![CDATA[*/
 
     var seat = document.getElementsByClassName("seat");
 
@@ -218,11 +215,11 @@
         if (event.target.classList[1] === "clicked") { // 클릭된 상태에서 다시 재클릭한 경우
             event.target.classList.remove("clicked");
             count = parseInt(count) - 1;
-            money = parseInt(money) - /*[[${detail.price}]]*/;
+            money = parseInt(money) - [[${detail.price}]] * 1;
         } else { // 처음 클릭한 경우
             event.target.classList.add("clicked");
             count = parseInt(count) + 1;
-            money = parseInt(money) + /*[[${detail.price}]]*/;
+            money = parseInt(money) + [[${detail.price}]] * 1;
         }
 
         // 결과 출력 => 몇 개 예매했는지 => 잘 나옴!!!!
@@ -230,7 +227,7 @@
         resultElement2.innerText = count;
 
         /*아작스에 data로 컨트롤러 넘겨주는 것 같은데 왜 null이 들어가누!*/
-        $.ajax({
+        /*$.ajax({
             type: 'POST',
             url: 'ticketing/add',
             data: {
@@ -244,7 +241,7 @@
                     alert("전송된 값 없음")
                 }
             }
-        });
+        });*/
     }
 
 
@@ -256,7 +253,6 @@
 
     init();
 
-/*]]>*/
 </script>
 </body>
 </html>
