@@ -53,7 +53,7 @@
 <div class="seatContainer">
     <div class="stage">STAGE</div>
     <div class="row">
-        <span class="seat">A1</span>
+        <span class="seat" >A1</span>
         <span class="seat">A2</span>
         <span class="seat">A3</span>
         <span class="seat">A4</span>
@@ -196,6 +196,7 @@
         <input type="hidden" name="id" th:value="${detail.performanceId}" />
         <input type="hidden" id="ticketingQuantity" name="ticketingQuantity" value="0"/>
         <input type="hidden" id="price" name="price" value="0"/>
+        <input type="hidden" id="seats" name="seats" value="0"/>
         <span id='count'>0</span>개 구매시 총 가격은 <span id='money'>0</span> 입니다. &nbsp;
         <button>결제 하기</button>
     </div>
@@ -214,20 +215,37 @@
         const resultElement2 = document.getElementById('count');
         let count = resultElement2.innerText;
 
+        let x = document.getElementsByClassName("seat clicked");
+        var arr = [];
+
+
         // 클릭시 색깔변경, 재클릭하면 해제
         if (event.target.classList[1] === "clicked") { // 클릭된 상태에서 다시 재클릭한 경우
             event.target.classList.remove("clicked");
             count = parseInt(count) - 1;
             money = parseInt(money) - [[${detail.price}]] * 1;
+
             document.getElementById('ticketingQuantity').value = count;
             document.getElementById('price').value = money;
+
         } else { // 처음 클릭한 경우
-            event.target.classList.add("clicked");
+            event.target.classList.add("clicked"); /* 좌석 선택시 class 에 seat -> seat clicked 되도록! */
             count = parseInt(count) + 1;
             money = parseInt(money) + [[${detail.price}]] * 1;
+
             document.getElementById('ticketingQuantity').value = count;
             document.getElementById('price').value = money;
         }
+
+        for(var i = 0; i< x.length; i++) {
+            /* 여기 안에서 구해야 console.log가 제대로 찍히네...*/
+            //console.log(x.item(i).textContent); /!* 문자열 취득!!!! *!/
+            arr[i] = x.item(i).textContent;
+        }
+
+        console.log(arr);
+        document.getElementById('seats').value = arr;
+
 
         // 결과 출력 => 몇 개 예매했는지 => 잘 나옴!!!!
         resultElement.innerText = money;
