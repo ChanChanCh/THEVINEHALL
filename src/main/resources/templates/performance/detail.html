@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1></h1>
-<form>
+<form action="/ticketing" method="get">
+    <input type="hidden" name="performanceId" th:value="${detail.performanceId}" />
   <div style="display: inline-block;vertical-align: top;">
     <!--컨트롤러, 서비스에서 리턴타입을 Optional이 아닌 entity 그대로 받으니까 detail.~~가 잘 적용됨!!-->
     <!--<input type="image" th:value="${detail.poster}" readonly/> => 주소가 뜸..., file로 하면 에러남-->
@@ -41,6 +42,8 @@
       <p></p>
       &nbsp; &nbsp;<span th:text="${detail.phone}"/>
   </div>
+
+    <button type="submit">예매하기</button>
 </form>
 </body>
 </html>
