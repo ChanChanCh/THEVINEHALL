@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>예매정보 입력</title>
+</head>
+<body>
+    <h1>주문자 정보 입력</h1>
+    <form action="/ticketing/complete" method="post">
+        <input type="text" placeholder="주문자 이름" name="ordererName" />
+        <input type="email" placeholder="주문자 이메일" name="ordererEmail" />
+        <input type="tel" placeholder="주문자 전화번호" name="ordererPhone" />
+        <button type="submit">다음단계</button>
+    </form>
+</body>
+</html>
