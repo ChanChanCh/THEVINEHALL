@@ -39,21 +39,20 @@ public class PerformanceService {
 
     // 공연 목록 띄우기
     public List<Performance> listAll() {
-
-        List<Performance> list = performanceRepository.findAll(Sort.by(Sort.Direction.DESC, "performanceId")); // 내림차순
-        return list;
+        return performanceRepository.findAll(Sort.by(Sort.Direction.DESC, "performanceId"));
     }
 
-    // 페이징을 적용된 목록 띄우기
-    /*@Transactional(readOnly = true)
-    public Page<Performance> list(Pageable pageable) {
-        return performanceRepository.findAll(pageable);
-    }*/
+
 
     // 공연 상세보기 띄우기
-    public Performance detail(int id) {
+    public boolean detail(int id) {
         //*get 사용하는 이유는 findById가 Optional로 감싸져 있기 때문에 Optional 안에 값 가져오기 위해서*//*
-        Performance detail = performanceRepository.findById(id).get();
-        return detail;
+        Optional<Performance> optionalPerformance = performanceRepository.findById(id);
+
+        if (!optionalPerformance.isPresent()) {
+            return false;
+        }
+
+        return true;
     }
 }
