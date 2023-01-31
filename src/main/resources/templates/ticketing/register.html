@@ -193,12 +193,12 @@
 
     <div class="div">
         <!--name 값을 통해 controller 로 넘겨줄 수 있음-->
-        <input type="hidden" name="id" th:value="${detail.performanceId}" />
+        <input type="hidden" name="performanceId" th:value="${detail.performanceId}" />
         <input type="hidden" id="ticketingQuantity" name="ticketingQuantity" value="0"/>
         <input type="hidden" id="price" name="price" value="0"/>
         <input type="hidden" id="seats" name="seats" value="0"/>
         <span id='count'>0</span>개 구매시 총 가격은 <span id='money'>0</span> 입니다. &nbsp;
-        <button>결제 하기</button>
+        <button>결제하기</button>
     </div>
 </div>
 </form>
@@ -242,7 +242,6 @@
             //console.log(x.item(i).textContent); /!* 문자열 취득!!!! *!/
             arr[i] = x.item(i).textContent;
         }
-
         console.log(arr);
         document.getElementById('seats').value = arr;
 
