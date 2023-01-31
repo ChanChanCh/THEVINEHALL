@@ -17,7 +17,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j /*에러 화면에 띄우기 위해*/
@@ -120,7 +119,7 @@ public class PerformanceController {
     public String detail(Model model, int id) {
 
         //*list 가 아니다!! 데이터 딱 한줄이 필요하므로!!*//*
-        Performance detail = performanceService.detail(id);
+        Boolean detail = performanceService.detail(id);
         model.addAttribute("detail", detail);
 
         return "/performance/detail";
