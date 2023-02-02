@@ -30,4 +30,6 @@ public class Ticketing {
     private String performanceId;
     private String userId;
 
+    private String seats;
+
 }
