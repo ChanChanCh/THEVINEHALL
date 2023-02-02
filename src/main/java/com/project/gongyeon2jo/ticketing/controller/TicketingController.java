@@ -2,15 +2,19 @@ package com.project.gongyeon2jo.ticketing.controller;
 
 import com.project.gongyeon2jo.performance.entity.Performance;
 import com.project.gongyeon2jo.performance.service.PerformanceService;
+import com.project.gongyeon2jo.ticketing.model.Seat;
 import com.project.gongyeon2jo.ticketing.model.Ticketing;
 import com.project.gongyeon2jo.ticketing.service.TicketingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -27,8 +31,16 @@ public class TicketingController {
         ModelAndView modelAndView = new ModelAndView();
 //        Optional<Performance> performance = performanceService.getPerformance(performanceId);
 //        modelAndView.addObject("performance", performance.get());
+
         Performance detail = performanceService.detail(performanceId);
         modelAndView.addObject("detail", detail);
+
+        List<List<String>> allSeats = ticketingService.getSeatInfo(performanceId);
+        modelAndView.addObject("allSeats", allSeats);
+
+        List<String> ticketedSeats = ticketingService.getTicketedSeats(performanceId);
+        modelAndView.addObject("ticketedSeats", ticketedSeats);
+
         modelAndView.setViewName("ticketing/seat");
         return modelAndView;
     }
@@ -44,9 +56,9 @@ public class TicketingController {
     @PostMapping("/complete")
     public ModelAndView complete(Ticketing ticketing) {
         ModelAndView modelAndView = new ModelAndView();
-        ticketingService.insert(ticketing);
         modelAndView.addObject("ticketing", ticketing);
         modelAndView.setViewName("ticketing/complete");
+        ticketingService.insert(ticketing);
         return modelAndView;
     }
 }
