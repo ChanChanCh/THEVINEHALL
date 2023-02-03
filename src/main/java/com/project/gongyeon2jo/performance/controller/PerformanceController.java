@@ -17,7 +17,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j /*에러 화면에 띄우기 위해*/
@@ -32,7 +31,7 @@ public class PerformanceController {
     public String performanceList(Model model) {
         List<Performance> lists = performanceService.listAll();
         model.addAttribute("lists", lists);
-        return "/index";
+        return "/index1";
     }
 
     // 공연 추가하기
