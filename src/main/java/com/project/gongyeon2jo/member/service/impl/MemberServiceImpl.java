@@ -82,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean sendResetPassword(ResetPasswordInput parameter) {
-        Optional<Member> optionalMember = memberRepository.findByUserIdAndUserName(parameter.getUserId(), parameter.getName());
+        Optional<Member> optionalMember = memberRepository.findByUserIdAndName(parameter.getUserId(), parameter.getName());
         if(!optionalMember.isPresent()) {
             throw new UsernameNotFoundException("회원 정보가 존재하지 않습니다.");
         }

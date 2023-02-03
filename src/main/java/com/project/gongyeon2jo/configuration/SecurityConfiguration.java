@@ -63,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.userDetailsService(memberService)
-            .passwordEncoder(getPasswordEncoder());
+                .passwordEncoder(getPasswordEncoder());
 
         super.configure(auth);
     }
