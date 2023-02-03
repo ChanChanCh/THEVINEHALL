@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1></h1>
+<form action="/ticketing" method="get">
+    <input type="hidden" name="performanceId" th:value="${detail.performanceId}" />
+  <div style="display: inline-block;vertical-align: top;">
+    <!--컨트롤러, 서비스에서 리턴타입을 Optional이 아닌 entity 그대로 받으니까 detail.~~가 잘 적용됨!!-->
+    <!--<input type="image" th:value="${detail.poster}" readonly/> => 주소가 뜸..., file로 하면 에러남-->
+    <img th:src="${detail.poster}" >
+  </div>
+  <div style="display:inline-block;">
+      <p></p><p></p><p></p>
+      <p>공연명</p> <!--p는 줄바꿈-->
+      &nbsp; &nbsp;<span th:text="${detail.displayName}"/> <!--span은 줄바꿈 없음-->
+      <p>공연일</p>
+      &nbsp; &nbsp;<span th:text="${detail.displayDate}"/>
+      <p>주최 / 주관</p>
+      &nbsp; &nbsp;<span th:text="${detail.company}"/>
+      <p>가격</p>
+      &nbsp; &nbsp;<span th:text="${detail.price}"/>
+  </div>
+  <div>
+      <p></p><p></p><p></p>
+      &nbsp; &nbsp;공연 이야기
+      <p></p>
+      &nbsp; &nbsp;<span th:text="${detail.story}"/>
+  </div>
+  <div>
+      <p></p><p></p><p></p>
+      &nbsp; &nbsp;공연 문의
+      <p></p>
+      &nbsp; &nbsp;<span th:text="${detail.question}"/>
+  </div>
+  <div>
+      <p></p><p></p><p></p>
+      &nbsp; &nbsp;문의하실 연락처
+      <p></p>
+      &nbsp; &nbsp;<span th:text="${detail.phone}"/>
+  </div>
+
+    <button type="submit">예매하기</button>
+</form>
+</body>
+</html>

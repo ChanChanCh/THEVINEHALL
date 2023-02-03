@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <title>Title</title>
+    <style>
+        .stage{
+            background-position: center top; /*가운데 위*/
+            width: auto;
+            height: 100px;
+            background-color: burlywood;
+            text-align: center;
+            margin-top: 50px; /*여백*/
+            margin-right: 200px; /*여백*/
+            margin-left: 200px; /*여백*/
+        }
+
+        .seat {
+            border: 1px solid; /*좌석 네모 만들기*/
+            width: 40px; /*한 좌석의 크기*/
+            height: 40px;
+            margin : 5px;  /*여백*/
+            background-color: lightsteelblue;
+            text-align: center;
+        }
+
+        .row{
+            margin-top: 10px;
+            display: flex; /*세로로 나열되던걸 가로로 나열되도록*/
+            justify-content: center; /*중앙 배치*/
+        }
+
+        .clicked { /*좌석 클릭하면 회색으로 변하도록*/
+            background-color : gray;
+        }
+
+        .ticketed {
+            background-color : gray;
+        }
+
+        .div{
+            margin-top: 20px;
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+<form action="/ticketing/order" method="post">
+    <input type="hidden" name="performanceId" th:value="${detail.performanceId}" /> <!--id는 get 에서 내려줄때만 쓰임-->
+    <input type="hidden" id="ticketingQuantity" name="ticketingQuantity" value="0"/>
+    <input type="hidden" id="price" name="price" value="0"/>
+    <input type="hidden" id="seats" name="seats" value="0"/>
+
+    <div class="seatContainer">
+        <div class="stage">STAGE</div>
+        <div class="row" th:each="row : ${allSeats}">
+            <span class="seat" th:each="seat :${row}" th:text="${seat}"></span>
+        </div>
+    </div>
+
+    <div class="div">
+        <span id='count'>0</span>개 구매시 총 가격은 <span id='money'>0</span> 입니다. &nbsp;
+        <button type="submit">다음단계</button>
+    </div>
+</form>
+<!--</form>-->
+<script th:inline="javascript"> /*javascript 내에서 타임 변수 사용하기 위해 추가*/
+var seat = document.getElementsByClassName("seat");
+
+function handleClick(event) {
+
+    // 화면에 예매 갯수 결과를 표시할 element
+    const resultElement = document.getElementById('money');
+    let money = resultElement.innerText;
+
+    const resultElement2 = document.getElementById('count');
+    let count = resultElement2.innerText;
+
+    let x = document.getElementsByClassName("seat clicked");
+    var arr = [];
+
+    // 클릭시 색깔변경, 재클릭하면 해제
+    if (event.target.classList[1] === "clicked") { // 클릭된 상태에서 다시 재클릭한 경우
+        event.target.classList.remove("clicked");
+        count = parseInt(count) - 1;
+        money = parseInt(money) - [[${detail.price}]];
+        document.getElementById('ticketingQuantity').value = count;
+        document.getElementById('price').value = money;
+    } else { // 처음 클릭한 경우
+        event.target.classList.add("clicked");
+        count = parseInt(count) + 1;
+        money = parseInt(money) + [[${detail.price}]];
+        document.getElementById('ticketingQuantity').value = count;
+        document.getElementById('price').value = money;
+    }
+
+   for(var i = 0; i < x.length; i++) {
+
+    console.log(x.item(i).textContent);
+      arr[i] = x.item(i).textContent;
+    }
+    console.log(arr);
+    document.getElementById('seats').value = arr;
+
+    // 결과 출력 => 몇 개 예매했는지 => 잘 나옴!!!!
+    resultElement.innerText = money;
+    resultElement2.innerText = count;
+}
+
+function init() {
+    for (var i = 0; i < seat.length; i++) { // 전좌석에 위 이벤트 적용
+        if (seat[i].innerText != "X") {
+            seat[i].addEventListener("click", handleClick);
+        } else {
+            seat[i].classList.add("ticketed");
+        }
+    }
+}
+init();
+
+</script>
+</body>
+</html>
